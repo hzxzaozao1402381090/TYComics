@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">天涯漫画</string>
+    <string name="start">马上进入</string>
+    <string name="sort">首页</string>
+    <string name="shujia">书架</string>
+    <string name="search">搜索</string>
+    <string name="mine">我的</string>
+
+    <!-- 登录界面 -->
+    <string name="btn_login">登录</string>
+    <string name="edt_login_name_hint">手机账号</string>
+    <string name="edt_login_pwd_hint">输入密码</string>
+    <string name="check_login_rem">记住密码</string>
+    <string name="text_register">注册</string>
+    <string name="text_other_login_method">其他登录方式</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- 注册界面-->
+    <string name="edit_register_phone_hint">输入您的手机号</string>
+    <string name="btn_register_phone">立即验证</string>
+    <string name="next">下一步</string>
+    <string name="nickname">输入昵称</string>
+    <string name="yz_code">输入验证码</string>
+    <string name="resend">重新发送</string>
+    <string name="click">点击获取</string>
+
+    <!-- 搜索界面-->
+    <string name="recommend">推荐专题</string>
+    <string name="remark">漫评赏析</string>
+    <string name="zixun">动漫资讯</string>
+    <string name="manhuang">专治漫荒</string>
+    <string name="current_hot">今日热点</string>current_
+    <string name="hot_search">热门搜索</string>
+    <string name="hot">热门</string>
+    <string name="top">排行榜</string>
+    <string name="ended">已完结</string>
+    <string name="recentUpdate">最近更新</string>
+    <string name="searchbar">搜索</string>
+    <string name="searchbar_hint">输入关键字搜索</string>
+
+    <!-- 书架界面-->
+    <string name="history">历史</string>
+    <string name="favorite">收藏</string>
+    <string name="downLoad">下载</string>
+
+    <!-- 获取数据-->
+    <string name="wait_dialog_title">正在加载</string>
+
+    <!-- 主界面-->
+    <string name="shaonian">少年漫画</string>
+    <string name="qingnian">青年漫画</string>
+    <string name="shaonv">少女漫画</string>
+    <string name="danmei">耽美漫画</string>
+    <string name="more">更多</string>
+
+    <!-- 详情界面-->
+    <string name="book_introduce">详情介绍</string>
+    <string name="share">分享</string>
+    <string name="download">下载</string>
+    <string name="keep">收藏</string>
+    <string name="desktop">桌面</string>
+    <!-- 个人中心界面-->
+    <string name="setting">设置</string>
+
+    <!--设置界面-->
+    <string name="update">漫画更新提醒</string>
+    <string name="recom">漫画推荐提醒</string>
+    <string name="theme">设置主题</string>
+    <string name="clearcache">清除缓存</string>
+    <string name="wifi">wifi自动下载</string>
+    <string name="netenvironment">网络环境提示</string>
+    <string name="nightmode">夜间模式</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

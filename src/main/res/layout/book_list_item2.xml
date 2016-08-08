@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="120dp">
+    <ImageView
+        android:id="@+id/cover_imageId"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/book_list_item_img"/>
+    <FrameLayout
+        android:layout_toRightOf="@+id/cover_imageId"
+        android:layout_alignBottom="@+id/cover_imageId"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingLeft="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/name_text"
+                android:text="度灵"
+                android:textSize="16sp"
+                android:textColor="@color/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/progress_text"
+                android:text="阅读到"
+                android:textColor="@color/detail"
+                android:textSize="12sp"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/update_text"
+                android:text="更新至"
+                android:textColor="@color/detail"
+                android:textSize="12sp"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/lastupdate_text"
+                android:text="最近更新"
+                android:textColor="@color/detail"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <CheckBox
+            android:id="@+id/chose"
+            android:button="@null"
+            android:visibility="invisible"
+            android:background="@drawable/check_selector2"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+</RelativeLayout>

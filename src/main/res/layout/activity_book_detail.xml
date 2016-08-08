@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine_bg"
+    android:id="@+id/parent"
+    tools:context="com.zaozao.comics.detail.BookDetail">
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/detail_back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/book_introduce"
+        android:paddingTop="10dp"
+        android:textColor="@color/detail"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        android:layout_below="@+id/back"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/book_cover"
+            android:layout_width="125dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/book_cover" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="15dp">
+
+            <TextView
+                android:id="@+id/book_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="为何不跪"
+                android:textColor="@color/detail"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                style="@style/myratingbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="4"
+                android:stepSize="0.5" />
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="更新至25话"
+                android:textColor="@color/detail"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lastupdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="最近更新：20160602"
+                android:textColor="@color/detail"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear"
+        android:layout_marginTop="30dp"
+        android:text="漫画介绍:"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/detail"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intro"
+        android:layout_marginTop="10dp"
+        android:text="暂无描述..."
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/detail"
+        android:textStyle="normal" />
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/content_tab"
+        android:layout_below="@+id/desc"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/content_pager"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/content_tab"
+        android:layout_above="@+id/divider_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:id="@+id/divider_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignTop="@+id/frame"
+        android:background="@drawable/divider"/>
+
+        <LinearLayout
+            android:id="@+id/frame"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/share"
+                android:text="@string/share"
+                android:gravity="center"
+                android:drawableTop="@drawable/share"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                android:textColor="@color/detail"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/download"
+                android:text="@string/downLoad"
+                android:gravity="center"
+                android:drawableTop="@drawable/download"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                android:textColor="@color/detail"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/keep"
+                android:text="@string/keep"
+                android:gravity="center"
+                android:drawableTop="@drawable/star"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                android:textColor="@color/detail"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/desktop"
+                android:text="@string/desktop"
+                android:gravity="center"
+                android:drawableTop="@drawable/desktop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                android:textColor="@color/detail"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+</RelativeLayout>

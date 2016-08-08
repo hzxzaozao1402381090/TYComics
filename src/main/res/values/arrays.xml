@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mine_list_name">
+        <item>系统消息</item>
+        <item>我的收藏</item>
+        <item>版本更新</item>
+        <item>关于</item>
+    </string-array>
+</resources>

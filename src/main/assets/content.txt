@@ -1,0 +1,110 @@
+{
+    "error_code": 200,
+    "reason": "请求成功！",
+    "result": {
+        "imageList": [
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/0-MjI3ODkzMA==.jpg",
+                "id": 1
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/1-MjI3ODkzMQ==.jpg",
+                "id": 2
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/2-MjI3ODkzMg==.jpg",
+                "id": 3
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/3-MjI3ODkzMw==.jpg",
+                "id": 4
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/4-MjI3ODkzNA==.jpg",
+                "id": 5
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/5-MjI3ODkzNQ==.jpg",
+                "id": 6
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/6-MjI3ODkzNg==.jpg",
+                "id": 7
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/7-MjI3ODkzNw==.jpg",
+                "id": 8
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/8-MjI3ODkzOA==.jpg",
+                "id": 9
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/9-MjI3ODkzOQ==.jpg",
+                "id": 10
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/10-MjI3ODkzMTA=.jpg",
+                "id": 11
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/11-MjI3ODkzMTE=.jpg",
+                "id": 12
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/12-MjI3ODkzMTI=.jpg",
+                "id": 13
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/13-MjI3ODkzMTM=.jpg",
+                "id": 14
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/14-MjI3ODkzMTQ=.jpg",
+                "id": 15
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/15-MjI3ODkzMTU=.jpg",
+                "id": 16
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/16-MjI3ODkzMTY=.jpg",
+                "id": 17
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/17-MjI3ODkzMTc=.jpg",
+                "id": 18
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/18-MjI3ODkzMTg=.jpg",
+                "id": 19
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/19-MjI3ODkzMTk=.jpg",
+                "id": 20
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/20-MjI3ODkzMjA=.jpg",
+                "id": 21
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/21-MjI3ODkzMjE=.jpg",
+                "id": 22
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/22-MjI3ODkzMjI=.jpg",
+                "id": 23
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/23-MjI3ODkzMjM=.jpg",
+                "id": 24
+            },
+            {
+                "imageUrl": "http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/24-MjI3ODkzMjQ=.jpg",
+                "id": 25
+            }
+        ],
+        "chapterId": 227893,
+        "comicName": "虹色妖姬"
+    }
+}

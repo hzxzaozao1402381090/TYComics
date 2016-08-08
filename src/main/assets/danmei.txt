@@ -1,0 +1,73 @@
+{
+    "error_code": 200,
+    "reason": "请求成功！",
+    "result": {
+        "total": 430,
+        "limit": 20,
+        "bookList": [
+            {
+                "name": "Torch Song Ecology",
+                "type": "耽美漫画",
+                "area": "日本漫画",
+                "des": "27岁的清武迪是个跑龙套的替身演员，某天在家听到小孩子在唱歌……",
+                "finish": true,
+                "lastUpdate": 20140711,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b99938f275fd560b21c4.jpg"
+            },
+            {
+                "name": "对着月亮狂吠",
+                "type": "耽美漫画",
+                "area": "日本漫画",
+                "des": "超级名模：兰有一对金色的眼珠。同时也是一个狼人但是这个秘密却被他的贴身护卫：干发…?",
+                "finish": false,
+                "lastUpdate": 20141202,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98838f275fd560b1fd3.jpg"
+            },
+            {
+                "name": "Say Ending",
+                "type": "耽美漫画",
+                "area": "韩国漫画",
+                "des": "Say Ending漫画 ，在咖啡店兼职的‘孔祝任’唯独觉得一个人很碍眼 每次都以邋遢的样子出现，不但很酷的无视掉室内禁烟的标志，而且一呆就是几个小时，这才是真正的烦人顾客 然而后来才发现烦人... 欢迎在新动漫漫画网观看Say Ending漫画",
+                "finish": false,
+                "lastUpdate": 20160402,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98838f275fd560b1fd6.jpg"
+            },
+            {
+                "name": "不幸中的幸福时光",
+                "type": "耽美漫画",
+                "area": "日本漫画",
+                "des": "不是在古老的过去，而是在现代的东京 超幸运工薪族和瘟神(!?)的难以置信的超滑稽爱情",
+                "finish": false,
+                "lastUpdate": 20141206,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98938f275fd560b1ff5.jpg"
+            },
+            {
+                "name": "时钟怪盗",
+                "type": "耽美漫画",
+                "area": "日本漫画",
+                "des": "时钟怪盗漫画 ，我们时生3兄弟原来过着平凡的生活,某天我们过世的爷爷变成幽灵出现,并命令我们要取回他生前所做的12座“零系列”老时钟,就这样成了小偷...啊...是“怪盗”！而且,因为这老头生前所结下的梁子,害我被刻之轮陷害,不得不和他们一起行动...天哪~~我可是前途光亮的普通老百姓耶~~欢迎在新动漫漫画网观看时钟怪盗漫画",
+                "finish": true,
+                "lastUpdate": 20141106,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98a38f275fd560b2016.jpg"
+            },
+            {
+                "name": "少年啊!要光耀耽美",
+                "type": "耽美漫画",
+                "area": "日本漫画",
+                "des": "新叶芹18岁—— 容貌端正、眉清目秀。曾让无数女孩为他哭泣。这样的他，却被迷上BL而被腐女化的女友给甩了!! 比自己更重要的「BL」究竟是什么!? 为了向女友争一口气，新叶把朋友都拖下水，开始画BL漫画……!? 为了君临BL漫画界顶点而走上邪门歪道的高中男生，描写其爱与野心的超音速爆笑四格漫画!! 这本漫画全以四格的形式表达，轻松有趣，看起来没有负担，也算是很入门级的BL漫画，有需要的话还可以拿来传教，一物两用，所以很值得一看哦……(本漫画内容介绍由xindm.cn整理提供)",
+                "finish": false,
+                "lastUpdate": 20141202,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98a38f275fd560b201d.jpg"
+            },
+            {
+                "name": "放课后的密会",
+                "type": "耽美漫画",
+                "area": "日本漫画",
+                "des": "一本正经VS吊儿郎当...性格相反的两位学部长，貌似争斗不休，实则私下却有著秘密的关系!?",
+                "finish": false,
+                "lastUpdate": 20150502,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98a38f275fd560b201e.jpg"
+            }
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="120dp">
+    <ImageView
+        android:id="@+id/imageId"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/book_list_item_img"/>
+    <LinearLayout
+        android:layout_toRightOf="@+id/imageId"
+        android:layout_alignBottom="@+id/imageId"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingLeft="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/read"
+            android:text="度灵"
+            android:textSize="16sp"
+            android:textColor="@color/detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/progress"
+            android:text="已完结"
+            android:textColor="@color/detail"
+            android:textSize="12sp"
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/nation"
+            android:text="国漫"
+            android:textColor="@color/detail"
+            android:textSize="12sp"
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/updateprogress"
+            android:text="最近更新"
+            android:textColor="@color/detail"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

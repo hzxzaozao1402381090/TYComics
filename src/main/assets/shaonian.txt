@@ -1,0 +1,190 @@
+{
+    "error_code": 200,
+    "reason": "请求成功！",
+    "result": {
+        "total": 15767,
+        "limit": 20,
+        "bookList": [
+            {
+                "name": "好漫画",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150406,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad617.jpg"
+            },
+            {
+                "name": "虹色妖姬",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20160602,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad61f.jpg"
+            },
+            {
+                "name": "灵神考试",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150603,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad613.jpg"
+            },
+            {
+                "name": "逆转仙师",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20160103,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad61d.jpg"
+            },
+            {
+                "name": "永恒传说",
+                "type": "少年漫画",
+                "area": "日本漫画",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150606,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad634.jpg"
+            },
+            {
+                "name": "我的同学都是外星人",
+                "type": "少年漫画",
+                "area": "日本漫画",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150416,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad638.jpg"
+            },
+            {
+                "name": "逆游戏",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150416,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad63d.jpg"
+            },
+            {
+                "name": "诛仙（星漫版）",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150416,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad636.jpg"
+            },
+            {
+                "name": "星空六班",
+                "type": "少年漫画",
+                "area": "日本漫画",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150416,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad640.jpg"
+            },
+            {
+                "name": "不败战神",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150416,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad641.jpg"
+            },
+            {
+                "name": "零界点",
+                "type": "少年漫画",
+                "area": "日本漫画",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150416,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad63c.jpg"
+            },
+            {
+                "name": "勇者与王子",
+                "type": "少年漫画",
+                "area": "日本漫画",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150404,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad662.jpg"
+            },
+            {
+                "name": "究极钢铁侠Avengers NOW!",
+                "type": "少年漫画",
+                "area": "欧美漫画",
+                "des": "当托尼变成了反派……",
+                "finish": false,
+                "lastUpdate": 20151027,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad684.jpg"
+            },
+            {
+                "name": "一闪一闪亮晶晶",
+                "type": "少年漫画",
+                "area": "日本漫画",
+                "des": "提督阵亡了，他死前希望雪风活下去,可是……",
+                "finish": true,
+                "lastUpdate": 20150404,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad685.jpg"
+            },
+            {
+                "name": "终极武器未来式",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20150820,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad6ce.jpg"
+            },
+            {
+                "name": "蔷薇缭乱",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20160617,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad6d0.jpg"
+            },
+            {
+                "name": "怪物大师",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20160617,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad6d8.jpg"
+            },
+            {
+                "name": "深国物语",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20160316,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad6d6.jpg"
+            },
+            {
+                "name": "双星之阴阳师",
+                "type": "少年漫画",
+                "area": "日本漫画",
+                "des": "少年阴阳武斗剧开幕！想要守护的话就振作起来！！",
+                "finish": false,
+                "lastUpdate": 20160604,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad6d7.jpg"
+            },
+            {
+                "name": "烈火青春",
+                "type": "少年漫画",
+                "area": "国漫",
+                "des": "",
+                "finish": false,
+                "lastUpdate": 20160617,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b86938f275fd560ad6d3.jpg"
+            }
+        ]
+    }
+}

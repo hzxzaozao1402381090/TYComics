@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <com.zaozao.comics.customview.MyRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler"/>
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/tranTheme"
+        android:layout_gravity="top"
+        android:visibility="gone"
+        >
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"
+            />
+        <TextView
+            android:id="@+id/chapter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:ellipsize="end"
+            android:text="崔丝塔娜"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:background="@color/tranTheme">
+        <TextView
+            android:id="@+id/hx"
+            android:text="横向翻页"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:drawableTop="@drawable/heng"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/ld"
+            android:text="亮度"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/shine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/ml"
+            android:text="目录"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/yj"
+            android:text="夜间模式"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/night"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</FrameLayout>

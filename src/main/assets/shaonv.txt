@@ -1,0 +1,133 @@
+{
+    "error_code": 200,
+    "reason": "请求成功！",
+    "result": {
+        "total": 4226,
+        "limit": 20,
+        "bookList": [
+            {
+                "name": "Monochrome Switch",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "楚楚可怜的小羊，忽然变成了狼人。",
+                "finish": true,
+                "lastUpdate": 20141113,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b92c38f275fd560b13b9.jpg"
+            },
+            {
+                "name": "Honey Switch",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "香气让我们融为一体……",
+                "finish": true,
+                "lastUpdate": 20141113,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b92838f275fd560b131e.jpg"
+            },
+            {
+                "name": "My Fair Neighbor",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "年龄差和年龄之间的故事！",
+                "finish": true,
+                "lastUpdate": 20150501,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b93b38f275fd560b15c5.jpg"
+            },
+            {
+                "name": "witch meets knight",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "出來混遲早要還的中野妹",
+                "finish": false,
+                "lastUpdate": 20141104,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b95c38f275fd560b1a4a.jpg"
+            },
+            {
+                "name": "DREAM PAIN-0",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "自我介绍",
+                "finish": true,
+                "lastUpdate": 20140313,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98838f275fd560b1fbd.jpg"
+            },
+            {
+                "name": "SNOW BLACK",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "在灰色的雪色调变深之前，想看到你些微的笑容~",
+                "finish": true,
+                "lastUpdate": 20141105,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98c38f275fd560b204a.jpg"
+            },
+            {
+                "name": "Berry Garden",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "暂无介绍",
+                "finish": true,
+                "lastUpdate": 20131204,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b96838f275fd560b1bcb.jpg"
+            },
+            {
+                "name": "红色 我好想你",
+                "type": "少女漫画",
+                "area": "港台漫画",
+                "des": "平凡、陈淑芬作品",
+                "finish": true,
+                "lastUpdate": 20120813,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b96e38f275fd560b1c8c.jpg"
+            },
+            {
+                "name": "All Right",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "就算没有钱，只要有爱，一切都OK！",
+                "finish": true,
+                "lastUpdate": 20141105,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b97338f275fd560b1d20.jpg"
+            },
+            {
+                "name": "ReReHoney ~SOS大作战~",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "别玛50周年纪念特别合作短篇。",
+                "finish": true,
+                "lastUpdate": 20130818,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98f38f275fd560b20b3.jpg"
+            },
+            {
+                "name": "Bad Boys",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "短篇故事集",
+                "finish": true,
+                "lastUpdate": 20120726,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b98438f275fd560b1f38.jpg"
+            },
+            {
+                "name": "还是喜欢你 不可以吗",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "暂无介绍",
+                "finish": true,
+                "lastUpdate": 20131129,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b97138f275fd560b1cf0.jpg"
+            },
+            {
+                "name": "吟味花之诵",
+                "type": "少女漫画",
+                "area": "日本漫画",
+                "des": "吟味花之诵漫画 ，出声朗读，这便是与书所拥有的真正乐趣的一场邂逅。声音很小的佐仓花，邂逅了“朗读”这一巨大的魅力。治愈系的热血故事。欢迎在新动漫漫画网观看吟味花之诵漫画",
+                "finish": false,
+                "lastUpdate": 20151127,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b8f238f275fd560b0ad4.jpg"
+            },
+            {
+                "name": "临时神差",
+                "type": "少女漫画",
+                "area": "国漫",
+                "des": "支持临时神差，支持国漫，支持临时神差请购买杂志。夜幕降临，校园灵异浮动，少女出击：这一次，绞尽脑汁也要抓到你。学霸萌妹，奇装异服来捉鬼。懒散面瘫男，无心凡俗做神差。......新动漫网是更新最快~画质最好的漫画杂志连载网站！！收藏新动漫网，全网第一时间 "
+            }
+        ]
+    }
+}

@@ -1,0 +1,82 @@
+ {
+    "error_code": 200,
+    "reason": "请求成功！",
+    "result": {
+        "total": 963,
+        "limit": 20,
+        "bookList": [
+            {
+                "name": "Short Cuts",
+                "type": "青年漫画",
+                "area": "日本漫画",
+                "des": "古屋兔丸老湿的重口味漫画。",
+                "finish": true,
+                "lastUpdate": 20140109,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b91e38f275fd560b11b3.jpg"
+            },
+            {
+                "name": "盗墓迷影",
+                "type": "青年漫画",
+                "area": "国漫",
+                "des": "埋藏地底的千年古墓、希特勒的黑魔法、日本的阴阳师、前苏联的隐秘组织、会说话的骷髅头，这一个个神秘诡异事件，到底有何关联，敬请期待……......",
+                "finish": false,
+                "lastUpdate": 20150504,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b8db38f275fd560b05fa.jpg"
+            },
+            {
+                "name": "五月妹杀",
+                "type": "青年漫画",
+                "area": "日本漫画",
+                "des": "这里是黑手党活跃的码头城市。回到阔别多年的家乡的青年·五本木、在音像店找到了一份包住的工作。在那里与少女·芽衣、人妖小桂一同生活。不过、这两个人都曾是黑手党「丽娜」的成员。而15岁的芽衣，更曾是冷酷无情的杀手。据说在这条街上、黑手党之间的抗争越发激烈。五本木就这样毫不知情地被卷入了纷杂的事态之中…",
+                "finish": false,
+                "lastUpdate": 20150510,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b8db38f275fd560b060f.jpg"
+            },
+            {
+                "name": "双生灵探",
+                "type": "青年漫画",
+                "area": "国漫",
+                "des": "双生灵探漫画：在一所大学的女子宿舍里，一位女学生忧心忡忡。最近自己身体发了很多奇怪的变化，比如说胸部越来越大了这件事。胸部增长的速度让她担心不已，但是又不明白到底是为什么。某夜她肚子上洗手间的时候，却发现每个门都关上了，没防备的她看到了可怕的一幕……事后学校传言她撞到鬼了。虽然知道说也说不清楚，她决定去那家“双生灵探事务所”寻求帮助。事务所内的实体小涂和灵体小糊，会怎么解决这些棘手的事情？",
+                "finish": false,
+                "lastUpdate": 20160305,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b8dc38f275fd560b0645.jpg"
+            },
+            {
+                "name": "特工零",
+                "type": "青年漫画",
+                "area": "日本漫画",
+                "des": "以「麻辣教师GTO」出名的日本漫画家藤泽亨即将推出新作。据悉，新作是藤泽亨老师的动漫作品「TOKKO特公」的衍生之作，漫画名为「特公·零 TOKKO ZERO」，此作于7月1日发售的连载英雄漫画的月刊杂志「HEROES」8月号上开始连载。 「TOKKO 特公」是藤泽亨老师曾在「月刊Afternoon」（讲谈社）上连载过的恐怖动作漫画，主要讲述异形怪物处理部队“特公”的故事。现新的连载「特公·零」是由藤泽亨担当原作，浅田有皆执笔作画，故事围绕“特公”警察・伊吹凉子女警时代经历的事件展开，喜爱藤泽亨作品的漫迷们绝对不能放过这部新作。",
+                "finish": false,
+                "lastUpdate": 20150715,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b8dc38f275fd560b063c.jpg"
+            },
+            {
+                "name": "百合妄想",
+                "type": "青年漫画",
+                "area": "日本漫画",
+                "des": "幸运星同人——有爱就不是问题",
+                "finish": true,
+                "lastUpdate": 20150404,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b8dc38f275fd560b0659.jpg"
+            },
+            {
+                "name": "希柏里尔",
+                "type": "青年漫画",
+                "area": "欧美漫画",
+                "des": "希柏里尔漫画 ，克拉克·阿什顿·史密斯著名小说改编。欢迎在新动漫漫画网观看希柏里尔漫画",
+                "finish": true,
+                "lastUpdate": 20150510,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b8dd38f275fd560b065e.jpg"
+            },
+            {
+                "name": "魔环",
+                "type": "青年漫画",
+                "area": "",
+                "des": "根据《最推理》小说轩弦的作品改编。一环套一环连环杀人案即将展开！",
+                "finish": false,
+                "lastUpdate": 20150625,
+                "coverImg": "http://imgs.juheapi.com/comic_xin/5559b8dd38f275fd560b0665.jpg"
+            }
+        ]
+    }
+}

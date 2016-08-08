@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaozao.comics.BookListActivity">
+    <RelativeLayout
+        android:id="@+id/linear"
+        android:background="@color/mine_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        >
+    <ImageView
+        android:id="@+id/list_back"
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/detail_back" />
+
+    <TextView
+        android:id="@+id/book_sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shaonian"
+        android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/list"
+        android:scrollbars="none"
+        android:divider="@drawable/divider"
+        android:dividerHeight="2dp"
+        android:listSelector="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear" />
+
+</RelativeLayout>
