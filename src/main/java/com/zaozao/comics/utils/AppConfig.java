@@ -54,7 +54,7 @@ public class AppConfig {
      */
     public void clearCache(Context context) {
         db = SQLiteDatabase.openOrCreateDatabase(context.getFilesDir().toString() + "_nohttp_cache_db.db", null);
-        db.execSQL("drop table cache_table");
+        db.execSQL("drop table cache_table;");
     }
 
     /**
@@ -163,7 +163,6 @@ public class AppConfig {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(loadFile.toString());
         return loadFile;
     }
 
@@ -171,7 +170,7 @@ public class AppConfig {
      * 读取所有的LoadFIle对象
      * @return
      */
-    public List<LoadFile> readLoadFiles(){
+    public List<LoadFile> readLoadFiles(String KeyName){
         List<LoadFile> files = new ArrayList<>();
         Map<String, ?> data = preferences.getAll();
         Set<? extends Map.Entry<String, ?>> set = data.entrySet();
@@ -179,8 +178,10 @@ public class AppConfig {
         while(it.hasNext()){
             Map.Entry<String, ?> next = it.next();
             String key = next.getKey();
-            LoadFile file = readLoadFile(key);
-            files.add(file);
+            if(key.startsWith(KeyName)){
+                LoadFile file = readLoadFile(key);
+                files.add(file);
+            }
         }
         return files;
     }

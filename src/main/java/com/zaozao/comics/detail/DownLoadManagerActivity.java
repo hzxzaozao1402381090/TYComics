@@ -77,9 +77,8 @@ public class DownLoadManagerActivity extends AppCompatActivity {
         comicName = intent.getStringExtra(Constant.COMICS_NAME);
         comic_cover = intent.getStringExtra(Constant.COMICS_COVER);
         choosedChapters = intent.getParcelableArrayListExtra(Constant.CHAPTER_LIST);
-        loadFiles = AppConfig.getInstance().readLoadFiles();
+        loadFiles = AppConfig.getInstance().readLoadFiles(comicName);
     }
-
     /**
      * 开启一个后台服务来下载文件
      */
@@ -159,10 +158,10 @@ public class DownLoadManagerActivity extends AppCompatActivity {
             if (action.equals(intent.getAction())) {
                 int max = intent.getIntExtra("max", 0);
                 progress += intent.getIntExtra("update_progress", 0);
-                System.out.println(progress + "进度");
+                System.out.println(progress + "进度"+max);
                 holder.setMax(max);
-                holder.setProgress(max);
-                holder.download_state.setText((progress / max) * 100 + "%" + "下载中");
+                holder.setProgress(progress);
+                holder.download_state.setText((progress*100)/max  + "%" + "下载中");
                 if (progress == max) {
                     holder.download_state.setText("下载完成");
                 }

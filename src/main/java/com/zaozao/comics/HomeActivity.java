@@ -97,4 +97,7 @@ public class HomeActivity extends FragmentActivity {
             mTintManager.setStatusBarTintEnabled(true);
         }
     }
+    public void setBack(){
+
+    }
 }

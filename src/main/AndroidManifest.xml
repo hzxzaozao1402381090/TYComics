@@ -91,6 +91,10 @@
                   <action android:name="com.zaozao.comics.detail.downloadmanageactivity"></action>
               </intent-filter>
         </receiver>
+        <provider
+            android:authorities="zaozao.hu"
+            android:name=".provider.MyProvider">
+        </provider>
     </application>
 
 </manifest>

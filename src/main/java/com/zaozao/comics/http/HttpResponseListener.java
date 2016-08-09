@@ -2,6 +2,7 @@ package com.zaozao.comics.http;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.view.WindowManager;
 
 import com.yolanda.nohttp.rest.OnResponseListener;
 import com.yolanda.nohttp.rest.Request;
@@ -44,6 +45,10 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
     public void onStart(int what) {
         if(waitDialog!=null&&!waitDialog.isShowing()){
             waitDialog.show();
+            WindowManager.LayoutParams lp = waitDialog.getWindow().getAttributes();
+            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            waitDialog.getWindow().setAttributes(lp);
         }
     }
 

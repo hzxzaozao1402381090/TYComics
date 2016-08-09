@@ -35,7 +35,6 @@
             android:id="@+id/download_progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:progressDrawable="@drawable/progressbar_style"
             style="?android:progressBarStyleHorizontal"
             android:layout_below="@+id/download_title" />
     </LinearLayout>

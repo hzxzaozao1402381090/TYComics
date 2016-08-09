@@ -77,6 +77,7 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
         startDownLoad.setOnClickListener(this);
         back.setOnClickListener(this);
         manager.setOnClickListener(this);
+
     }
 
     /**
