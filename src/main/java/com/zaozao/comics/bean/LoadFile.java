@@ -69,6 +69,14 @@ public class LoadFile implements Serializable{
     }
 
     @Override
+    public boolean equals(Object o) {
+        if(o instanceof LoadFile){
+            return this.coverImaage == ((LoadFile) o).getCoverImaage();
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
         return name+","+progress+","+max+coverImaage;
     }

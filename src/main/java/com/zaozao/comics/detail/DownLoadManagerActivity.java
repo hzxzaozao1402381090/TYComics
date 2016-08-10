@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +24,10 @@ import com.zaozao.comics.bean.LoadFile;
 import com.zaozao.comics.services.DownLoadService;
 import com.zaozao.comics.utils.AppConfig;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +62,12 @@ public class DownLoadManagerActivity extends AppCompatActivity {
         init();
         startDownload();
         setAdapterListener();
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 
     /**
@@ -67,7 +79,6 @@ public class DownLoadManagerActivity extends AppCompatActivity {
         other.setText("删除");
         title.setText(comicName);
     }
-
     /**
      * 获取Intent传来的数据
      * 其中包含了每个章节的所有图片地址

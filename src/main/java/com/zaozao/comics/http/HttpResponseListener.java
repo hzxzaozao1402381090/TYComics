@@ -45,10 +45,6 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
     public void onStart(int what) {
         if(waitDialog!=null&&!waitDialog.isShowing()){
             waitDialog.show();
-            WindowManager.LayoutParams lp = waitDialog.getWindow().getAttributes();
-            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-            waitDialog.getWindow().setAttributes(lp);
         }
     }
 

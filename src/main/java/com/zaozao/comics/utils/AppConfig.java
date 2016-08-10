@@ -180,7 +180,9 @@ public class AppConfig {
             String key = next.getKey();
             if(key.startsWith(KeyName)){
                 LoadFile file = readLoadFile(key);
-                files.add(file);
+                if(!files.contains(file)){
+                    files.add(file);
+                }
             }
         }
         return files;
