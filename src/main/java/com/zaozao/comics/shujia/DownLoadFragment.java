@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +61,8 @@ public class DownLoadFragment extends Fragment {
     FrameLayout parentFrame;
     ContentResolver cr;
     Uri uri;
+    String key;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,19 +85,26 @@ public class DownLoadFragment extends Fragment {
             Iterator<? extends Map.Entry<String, ?>> it = entry.iterator();
             while (it.hasNext()) {
                 Map.Entry<String, ?> next = it.next();
-                String key = next.getKey();
-                keys.add(key);
-                fileList.add(AppConfig.getInstance().readLoadFile(key));
+                String realKey = next.getKey();
+                keys.add(realKey);
+                String comicName = realKey.split("/")[0];
+                if (!comicName.equals(key)) {
+                    key = comicName;
+                    fileList.add(AppConfig.getInstance().readLoadFile(realKey));
+                }
             }
+            Log.i("SIZE", fileList.size() + "");
             adapter = new DownLoadAdapter(getContext(), fileList);
         }
         initObserver();
     }
-    public void initObserver(){
+
+    public void initObserver() {
         Uri uri = Uri.parse("content://zaozao.hu");
-        Observer observer = new Observer(new Handler(),adapter, fileList);
-        cr.registerContentObserver(uri,true,observer);
+        Observer observer = new Observer(new Handler(), adapter, fileList);
+        cr.registerContentObserver(uri, true, observer);
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -165,7 +175,7 @@ public class DownLoadFragment extends Fragment {
                         public void onClick(DialogInterface dialog, int which) {
                             String key = keys.get(position);
                             fileList.remove(position);
-                            cr.delete(uri,key,null);
+                            cr.delete(uri, key.split("/")[0], null);
                         }
                     });
                     dialog.create().show();

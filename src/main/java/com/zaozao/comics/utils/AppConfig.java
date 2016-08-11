@@ -112,6 +112,7 @@ public class AppConfig {
 
     /**
      * 将LoadFile对象存储在sharedpreferences中
+     *
      * @param key
      * @param loadFile
      */
@@ -139,6 +140,7 @@ public class AppConfig {
 
     /**
      * 读取对象
+     *
      * @param key
      * @return
      */
@@ -168,21 +170,20 @@ public class AppConfig {
 
     /**
      * 读取所有的LoadFIle对象
+     *
      * @return
      */
-    public List<LoadFile> readLoadFiles(String KeyName){
+    public List<LoadFile> readLoadFiles(String KeyName) {
         List<LoadFile> files = new ArrayList<>();
         Map<String, ?> data = preferences.getAll();
         Set<? extends Map.Entry<String, ?>> set = data.entrySet();
         Iterator<? extends Map.Entry<String, ?>> it = set.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             Map.Entry<String, ?> next = it.next();
             String key = next.getKey();
-            if(key.startsWith(KeyName)){
+            if (key.startsWith(KeyName)) {
                 LoadFile file = readLoadFile(key);
-                if(!files.contains(file)){
-                    files.add(file);
-                }
+                files.add(file);
             }
         }
         return files;
@@ -190,9 +191,19 @@ public class AppConfig {
 
     /**
      * 删除一条记录
+     *
      * @param key
      */
-    public void deleteRecord(String key){
-        preferences.edit().remove(key).commit();
+    public void deleteRecord(String key) {
+        Map<String, ?> all = preferences.getAll();
+        Set<? extends Map.Entry<String, ?>> entry = all.entrySet();
+        Iterator<? extends Map.Entry<String, ?>> it = entry.iterator();
+        while (it.hasNext()) {
+            Map.Entry<String, ?> k = it.next();
+            String realKey = k.getKey();
+            if (realKey.startsWith(key)) {
+                preferences.edit().remove(realKey).commit();
+            }
+        }
     }
 }

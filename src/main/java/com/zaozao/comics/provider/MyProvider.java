@@ -8,6 +8,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
+import com.zaozao.comics.utils.AppConfig;
+
 /**
  * Created by 胡章孝 on 2016/8/9.
  */
@@ -36,7 +38,8 @@ public class MyProvider extends ContentProvider {
     }
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        preferences.edit().remove(selection).commit();
+
+        AppConfig.getInstance().deleteRecord(selection);
         getContext().getContentResolver().notifyChange(uri,null);
         return 0;
     }

@@ -140,7 +140,7 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
             loadFile.setName(choosedChapters.get(i).getName());
             loadFile.setMax(100);
             loadFile.setProgress(0);
-            AppConfig.getInstance().putLoadFile(comicName + choosedChapters.get(i).getName(), loadFile);
+            AppConfig.getInstance().putLoadFile(comicName +"/"+ choosedChapters.get(i).getName(), loadFile);
         }
     }
 

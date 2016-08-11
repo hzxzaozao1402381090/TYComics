@@ -34,11 +34,10 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
     private String comicName;
     private AppConfig config;
     private String comic_cover;
-    private List<Request<Bitmap>> requests;
+    private List<List<Request<Bitmap>>> allRequests;
     public DownLoadService() {
         super("DownLoadService");
     }
-
     @Override
     protected void onHandleIntent(Intent intent) {
         loadPageData = new LoadPageData(this, HttpURL.COMICS_CHAPTER_CONTENT, this);
@@ -49,7 +48,7 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
     }
 
     public void init() {
-        requests = new ArrayList<>();
+        allRequests = new ArrayList<>();
         config = AppConfig.getInstance();
         imgList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
@@ -66,13 +65,15 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
             Log.i("REQUEST", imgList.size() + "," + list.size());
             if (imgList.size() == list.size()) {
                 for (int i = 0; i < imgList.size(); i++) {
+                    List<Request<Bitmap>> requests = new ArrayList<>();
                     for (int j = i; j < imgList.get(i).size(); j++) {
                         String url = imgList.get(i).get(j);
                         Request<Bitmap> request = NoHttp.createImageRequest(url);
                         requests.add(request);
+                        allRequests.add(requests);
                     }
                 }
-                startDownload(requests, UUID.randomUUID().toString());
+                startDownload(allRequests, UUID.randomUUID().toString());
             }
         }
     }
@@ -83,12 +84,13 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
      * @param urls 请求集合
      * @param key  缓存Key值
      */
-    public void startDownload(List<Request<Bitmap>> urls, String key) {
+    public void startDownload(List<List<Request<Bitmap>>> urls, String key) {
         for (int i = 0; i < urls.size(); i++) {
-            Request<Bitmap> request = urls.get(i);
-            request.setCacheKey(key);
+            List<Request<Bitmap>> request = urls.get(i);
+
+         /*   request.setCacheKey(key);
             request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
-            CallServer.getInstance().add(APP.getInstance(), 1, request, this, true, false);
+            CallServer.getInstance().add(APP.getInstance(), 1, request, this, true, false);*/
         }
     }
 
@@ -97,7 +99,8 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
         Intent intent = new Intent();
         intent.setAction("com.zaozao.comics.detail.downloadmanageactivity");
         intent.putExtra("update_progress", 1);
-        intent.putExtra("max", requests.size());
+     //  intent.putExtra("max", requests.size());
+
         sendBroadcast(intent);
     }
 
