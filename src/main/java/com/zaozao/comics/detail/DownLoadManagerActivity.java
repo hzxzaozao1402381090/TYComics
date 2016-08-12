@@ -52,7 +52,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
     String comic_cover;
     static int progress;
     static MyHolder holder;
-
+    DownLoadRecyAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +74,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
      * 初始化
      */
     public void init() {
+        adapter = new DownLoadRecyAdapter();
         llManager = new LinearLayoutManager(this);
         llManager.setOrientation(LinearLayoutManager.VERTICAL);
         other.setText("删除");
@@ -106,7 +107,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
      */
     public void setAdapterListener() {
         downloadRecycle.setLayoutManager(llManager);
-        downloadRecycle.setAdapter(new DownLoadRecyAdapter());
+        downloadRecycle.setAdapter(adapter);
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,6 +147,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
 
         public MyHolder(View itemView) {
             super(itemView);
+            
             chapter = (TextView) itemView.findViewById(R.id.download_title);
             download_state = (TextView) itemView.findViewById(R.id.download_state);
             progressBar = (ProgressBar) itemView.findViewById(R.id.download_progress);

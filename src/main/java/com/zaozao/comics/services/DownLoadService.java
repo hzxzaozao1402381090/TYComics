@@ -24,6 +24,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class DownLoadService extends IntentService implements LoadPageData.DataCallback, HttpListener<Bitmap> {
 
@@ -35,9 +37,12 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
     private AppConfig config;
     private String comic_cover;
     private List<List<Request<Bitmap>>> allRequests;
+    private List<LoadFile> loadFiles;
+
     public DownLoadService() {
         super("DownLoadService");
     }
+
     @Override
     protected void onHandleIntent(Intent intent) {
         loadPageData = new LoadPageData(this, HttpURL.COMICS_CHAPTER_CONTENT, this);
@@ -50,6 +55,7 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
     public void init() {
         allRequests = new ArrayList<>();
         config = AppConfig.getInstance();
+        loadFiles = config.readLoadFiles(comicName);
         imgList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             loadPageData.addRequestParams(HttpURL.APP_KEY, comicName, list.get(i).getId());
@@ -73,7 +79,7 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
                         allRequests.add(requests);
                     }
                 }
-                startDownload(allRequests, UUID.randomUUID().toString());
+                startDownload(allRequests);
             }
         }
     }
@@ -82,30 +88,49 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
      * 开始下载
      *
      * @param urls 请求集合
-     * @param key  缓存Key值
      */
-    public void startDownload(List<List<Request<Bitmap>>> urls, String key) {
-        for (int i = 0; i < urls.size(); i++) {
-            List<Request<Bitmap>> request = urls.get(i);
+    public void startDownload(List<List<Request<Bitmap>>> urls) {
 
-         /*   request.setCacheKey(key);
-            request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
-            CallServer.getInstance().add(APP.getInstance(), 1, request, this, true, false);*/
+        ExecutorService es = Executors.newFixedThreadPool(3);
+        for (int i = 0; i < urls.size(); i++) {
+            config.putInt(comicName + i, 0);
+            es.execute(new DownLoadTask(urls.get(i), i));
         }
     }
 
     @Override
     public void onSuccessed(int what, Response<Bitmap> response) {
-        Intent intent = new Intent();
-        intent.setAction("com.zaozao.comics.detail.downloadmanageactivity");
-        intent.putExtra("update_progress", 1);
-     //  intent.putExtra("max", requests.size());
-
-        sendBroadcast(intent);
+        synchronized (this){
+            Intent intent = new Intent();
+            intent.setAction("com.zaozao.comics.detail.downloadmanageactivity");
+            intent.putExtra("update_progress", 1);
+            intent.putExtra("max", allRequests.get(what).size());
+            sendBroadcast(intent);
+        }
     }
 
     @Override
     public void onFailed(int what, String url, Object tag, Exception e, int responseCode, long networkMillis) {
 
+    }
+
+    class DownLoadTask implements Runnable {
+        List<Request<Bitmap>> list;
+        int what;
+
+        public DownLoadTask(List<Request<Bitmap>> list, int what) {
+            this.list = list;
+            this.what = what;
+        }
+
+        @Override
+        public void run() {
+            for (int i = 0; i < list.size(); i++) {
+                Request<Bitmap> request = list.get(i);
+                request.setCacheKey(UUID.randomUUID().toString());
+                request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
+                CallServer.getInstance().add(APP.getInstance(), what, request, DownLoadService.this, true, false);
+            }
+        }
     }
 }

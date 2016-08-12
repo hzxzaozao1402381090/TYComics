@@ -206,4 +206,7 @@ public class AppConfig {
             }
         }
     }
+    public void putInt(String key,int progress){
+        preferences.edit().putInt(key,progress).commit();
+    }
 }
