@@ -1,47 +1,32 @@
 package com.zaozao.comics.bean;
 
-import java.io.Serializable;
-
 /**
- * Created by 胡章孝 on 2016/8/6.
+ * Created by 胡章孝 on 2016/8/14.
  */
-public class LoadFile implements Serializable{
-
+public class LoadFile {
     /**
-     * 漫画名称
-     */
-    private String comicName;
-    /**
-     * 章节名称
+     * 下载文件名
      */
     private String name;
     /**
-     * 文件下载进度
+     * 下载进度
      */
     private int progress;
     /**
-     * 文件总大小
+     * 文件的长度
      */
     private int max;
     /**
-     * 漫画封面
+     * 文件状态
      */
-    private String coverImaage;
+    private String state;
 
-    public String getCoverImaage() {
-        return coverImaage;
+    public String getState() {
+        return state;
     }
 
-    public void setCoverImaage(String coverImaage) {
-        this.coverImaage = coverImaage;
-    }
-
-    public String getComicName() {
-        return comicName;
-    }
-
-    public void setComicName(String comicName) {
-        this.comicName = comicName;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public int getMax() {
@@ -66,18 +51,5 @@ public class LoadFile implements Serializable{
 
     public void setProgress(int progress) {
         this.progress = progress;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if(o instanceof LoadFile){
-            return this.coverImaage == ((LoadFile) o).getCoverImaage();
-        }
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return name+","+progress+","+max+coverImaage;
     }
 }

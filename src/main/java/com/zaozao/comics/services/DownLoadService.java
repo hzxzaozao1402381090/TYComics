@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.yolanda.nohttp.NoHttp;
-import com.yolanda.nohttp.download.DownloadRequest;
 import com.yolanda.nohttp.rest.CacheMode;
 import com.yolanda.nohttp.rest.Request;
 import com.yolanda.nohttp.rest.Response;
@@ -20,7 +19,6 @@ import com.zaozao.comics.http.HttpListener;
 import com.zaozao.comics.http.HttpURL;
 import com.zaozao.comics.utils.AppConfig;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -55,7 +53,7 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
     public void init() {
         allRequests = new ArrayList<>();
         config = AppConfig.getInstance();
-        loadFiles = config.readLoadFiles(comicName);
+      //  loadFiles = config.readLoadFiles(comicName);
         imgList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             loadPageData.addRequestParams(HttpURL.APP_KEY, comicName, list.get(i).getId());

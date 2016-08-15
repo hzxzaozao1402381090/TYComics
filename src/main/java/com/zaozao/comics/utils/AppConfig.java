@@ -7,7 +7,6 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.zaozao.comics.APP;
-import com.zaozao.comics.bean.LoadFile;
 
 import org.apache.commons.codec.binary.Base64;
 

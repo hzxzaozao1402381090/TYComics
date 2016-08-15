@@ -3,14 +3,8 @@ package com.zaozao.comics.detail;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,14 +12,13 @@ import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zaozao.comics.Constant;
 import com.zaozao.comics.R;
 import com.zaozao.comics.bean.BookChapter;
 import com.zaozao.comics.bean.LoadFile;
-import com.zaozao.comics.customview.MyGridView;
 import com.zaozao.comics.utils.AppConfig;
+import com.zaozao.comics.utils.SharedPre;
 
 import java.util.ArrayList;
 
@@ -133,14 +126,10 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
      * 记录下来，每个文件的下载进度，以及其他相关信息
      */
     public void saveLoadFile() {
+        SharedPre sharedPre = new SharedPre("comics", this);
         for (int i = 0; i < choosedChapters.size(); i++) {
-            LoadFile loadFile = new LoadFile();
-            loadFile.setComicName(comicName);
-            loadFile.setCoverImaage(comic_cover);
-            loadFile.setName(choosedChapters.get(i).getName());
-            loadFile.setMax(100);
-            loadFile.setProgress(0);
-            AppConfig.getInstance().putLoadFile(comicName +"/"+ choosedChapters.get(i).getName(), loadFile);
+            sharedPre.putInt(comicName + choosedChapters.get(i).getName(), 0);
+
         }
     }
 
