@@ -23,6 +23,7 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
         this.context = context;
         this.callback = callback;
         this.request = request;
+        isLoading = false;
         if(context!=null&&isLoading){
             waitDialog = new WaitDialog(context);
             waitDialog.setCancelable(canCancel);

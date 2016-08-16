@@ -3,6 +3,7 @@ package com.zaozao.comics.provider;
 import android.database.ContentObserver;
 import android.os.Handler;
 
+import com.zaozao.comics.bean.LoadFile;
 import com.zaozao.comics.shujia.DownLoadFragment;
 
 import java.util.List;

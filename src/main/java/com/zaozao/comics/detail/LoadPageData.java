@@ -1,8 +1,10 @@
 package com.zaozao.comics.detail;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.yolanda.nohttp.NoHttp;
+import com.yolanda.nohttp.rest.CacheMode;
 import com.yolanda.nohttp.rest.Request;
 import com.yolanda.nohttp.rest.Response;
 import com.zaozao.comics.http.CallServer;
@@ -36,10 +38,7 @@ public class LoadPageData implements HttpListener<String> {
      * 数据回调接口对象
      */
     private DataCallback callback;
-    /**
-     * 章节名
-     */
-    private String name;
+
     /**
      * 构造函数
      * @param url
@@ -61,6 +60,9 @@ public class LoadPageData implements HttpListener<String> {
         request.add("key", key);
         request.add("comicName", name);
         request.add("id", id);
+        Log.i("URL",url);
+        request.setCacheKey(url);
+        request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
     }
 
     /**
@@ -69,10 +71,6 @@ public class LoadPageData implements HttpListener<String> {
      */
     public void addTask(int what){
         CallServer.getInstance().add(context,what,request,this,false,true);
-    }
-    public void addTaskInService(int what,String name){
-        this.name = name;
-        CallServer.getInstance().add(context,what,request,this,true,false);
     }
     /**
      * 请求成功回调
@@ -84,7 +82,7 @@ public class LoadPageData implements HttpListener<String> {
         if(response!=null){
             String json = response.get();
             try {
-                callback.getData(JsonParser.getContentImage(json), name);
+                callback.getData(JsonParser.getContentImage(json));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -105,7 +103,7 @@ public class LoadPageData implements HttpListener<String> {
         e.printStackTrace();
     }
     public interface DataCallback{
-        void getData( ArrayList<String> imageList,String name);
+        void getData( ArrayList<String> imageList);
     }
 }
 

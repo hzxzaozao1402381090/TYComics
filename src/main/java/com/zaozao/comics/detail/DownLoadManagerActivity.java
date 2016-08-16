@@ -4,9 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.zaozao.comics.Constant;
@@ -24,6 +27,8 @@ import butterknife.InjectView;
 
 public class DownLoadManagerActivity extends AppCompatActivity {
 
+
+    String comicName;
     @InjectView(R.id.back_arrow)
     ImageView backArrow;
     @InjectView(R.id.title)
@@ -31,14 +36,14 @@ public class DownLoadManagerActivity extends AppCompatActivity {
     @InjectView(R.id.other)
     TextView other;
     @InjectView(R.id.download_recycle)
-    String comicName;
+    ListView downloadRecycle;
     private ArrayList<BookChapter> choosedChapters;
     static String action = "com.zaozao.comics.detail.downloadmanageactivity";
     String comic_cover;
-    static int progress;
     static List<LoadFile> fileList;
-    ListViewAdapter adapter;
+    static ListViewAdapter adapter;
     SharedPre sharedPre;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,21 +51,15 @@ public class DownLoadManagerActivity extends AppCompatActivity {
         ButterKnife.inject(this);
         getIntentData();
         init();
-        startDownload();
         setAdapterListener();
-
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+        startDownload();
     }
 
     /**
      * 初始化
      */
     public void init() {
-        sharedPre = new SharedPre("comics",this);
+        sharedPre = new SharedPre("comics", this);
         fileList = sharedPre.getAll();
         adapter = new ListViewAdapter(this, fileList);
         other.setText("删除");
@@ -93,7 +92,17 @@ public class DownLoadManagerActivity extends AppCompatActivity {
      * 设置适配器和监听器
      */
     public void setAdapterListener() {
+        downloadRecycle.setAdapter(adapter);
+        downloadRecycle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LoadFile file = (LoadFile) parent.getItemAtPosition(position);
+                if(file.getState().equals("下载完成")){
+                    Intent intent = new Intent(DownLoadManagerActivity.this,ContentActivity.class);
 
+                }
+            }
+        });
     }
 
 
@@ -101,12 +110,27 @@ public class DownLoadManagerActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            System.out.println(action.equals(intent.getAction()) + "收到广播");
-            if (action.equals(intent.getAction())) {
-                int max = intent.getIntExtra("max", 0);
-                progress += intent.getIntExtra("update_progress", 0);
-                System.out.println(progress + "进度" + max);
 
+            if (intent.getAction().equals(action)) {
+                System.out.println("收到广播----------------------------------------------------");
+                String type = intent.getStringExtra("type");
+                int max = intent.getIntExtra("max", 0);
+                for (LoadFile file : fileList) {
+                    if (file.getName().equals(type)) {
+                        int progress = file.getProgress();
+                        file.setMax(max);
+                        file.setProgress(++progress);
+                        if (progress == max) {
+                            file.setState("下载完成");
+                        } else {
+                            file.setState((progress * 100) / max + "%下载中");
+                        }
+                    }
+                }
+                for (LoadFile file : fileList) {
+                    System.out.println(file.getName() + "," + file.getProgress());
+                }
+                adapter.notifyDataSetChanged();
             }
         }
     }

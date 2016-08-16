@@ -34,10 +34,6 @@ public class MyIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-      /*  Intent s = new Intent();
-        intent.setAction("com.zaozao.others.MyReceiver");
-        // intent.setType(m);
-        sendBroadcast(s);*/
         ExecutorService es = Executors.newFixedThreadPool(3);
         Map<String, List<String>> map = getMapData();
         Set<Map.Entry<String, List<String>>> entry = map.entrySet();
@@ -68,7 +64,7 @@ public class MyIntentService extends IntentService {
         @Override
         public void run() {
             for (int i = 0; i < list.size(); i++) {
-                LoadImage loadImage = new LoadImage(this);
+                LoadImage loadImage = new LoadImage(this,getApplicationContext());
                 loadImage.downLoadImage(list.get(i), "comics", true);
             }
         }

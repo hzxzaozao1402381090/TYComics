@@ -1,6 +1,7 @@
 package com.zaozao.comics.utils;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -31,9 +32,15 @@ public class SqliteDao {
      * @param path 图片存放在SD上的地址
      */
     public void insert(String name, String path) {
-        db.execSQL("insert into comics(name,path) values(?,?)", new String[]{name, path});
+        db.execSQL("insert into comic(name,path) values(?,?)", new String[]{name, path});
     }
-
+    public boolean query(String name){
+        Cursor cursor = db.rawQuery("select path from comic where name = ?",new String[]{name});
+        if(cursor!=null&&cursor.moveToNext()){
+            return true;
+        }
+        return false;
+    }
     /**
      * 关闭数据库
      */

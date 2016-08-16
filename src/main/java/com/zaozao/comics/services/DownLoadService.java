@@ -3,6 +3,8 @@ package com.zaozao.comics.services;
 import android.app.IntentService;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import com.yolanda.nohttp.NoHttp;
@@ -18,24 +20,28 @@ import com.zaozao.comics.http.CallServer;
 import com.zaozao.comics.http.HttpListener;
 import com.zaozao.comics.http.HttpURL;
 import com.zaozao.comics.utils.AppConfig;
+import com.zaozao.comics.utils.LoadImage;
+import com.zaozao.comics.utils.SharedPre;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class DownLoadService extends IntentService implements LoadPageData.DataCallback, HttpListener<Bitmap> {
+public class DownLoadService extends IntentService implements LoadPageData.DataCallback {
 
 
     private ArrayList<BookChapter> list;
     private LoadPageData loadPageData;
-    private List<ArrayList<String>> imgList;
+    private Map<String, ArrayList<String>> imgList;
     private String comicName;
-    private AppConfig config;
     private String comic_cover;
-    private List<List<Request<Bitmap>>> allRequests;
-    private List<LoadFile> loadFiles;
+    int i = 0;
 
     public DownLoadService() {
         super("DownLoadService");
@@ -47,88 +53,98 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
         comicName = intent.getStringExtra(Constant.COMICS_NAME);
         comic_cover = intent.getStringExtra(Constant.COMICS_COVER);
         list = intent.getParcelableArrayListExtra(Constant.CHAPTER_LIST);
+        for(BookChapter chapter:list){
+            System.out.println(chapter.getName()+"---------"+chapter.getId());
+        }
         init();
     }
 
     public void init() {
-        allRequests = new ArrayList<>();
-        config = AppConfig.getInstance();
-      //  loadFiles = config.readLoadFiles(comicName);
-        imgList = new ArrayList<>();
+        imgList = new HashMap<>();
         for (int i = 0; i < list.size(); i++) {
             loadPageData.addRequestParams(HttpURL.APP_KEY, comicName, list.get(i).getId());
-            loadPageData.addTaskInService(list.get(i).getId(), list.get(i).getName());
+            loadPageData.addTask(list.get(i).getId());
         }
     }
 
     @Override
-    public void getData(ArrayList<String> imageList, String chapter_name) {
-        Log.i("REQUEST", imageList.size() + "");
+    public void getData(ArrayList<String> imageList) {
+        Log.i("REQUEST__", imageList.size() + "--------------------------------");
         if (imageList != null) {
-            this.imgList.add(imageList);
-            Log.i("REQUEST", imgList.size() + "," + list.size());
-            if (imgList.size() == list.size()) {
-                for (int i = 0; i < imgList.size(); i++) {
-                    List<Request<Bitmap>> requests = new ArrayList<>();
-                    for (int j = i; j < imgList.get(i).size(); j++) {
-                        String url = imgList.get(i).get(j);
-                        Request<Bitmap> request = NoHttp.createImageRequest(url);
-                        requests.add(request);
-                        allRequests.add(requests);
-                    }
+            this.imgList.put(comicName+(++i), imageList);
+            Log.i("REQUEST__", imgList.size()+ "," + list.size());
+            Set<Map.Entry<String, ArrayList<String>>> entry = imgList.entrySet();
+            Iterator<Map.Entry<String, ArrayList<String>>> it = entry.iterator();
+            while(it.hasNext()){
+                Map.Entry<String, ArrayList<String>> next = it.next();
+                Log.i("REQUEST__",next.getKey()+","+next.getValue());
+            }
+            if(imgList.size()==list.size()){
+                ExecutorService es = Executors.newFixedThreadPool(3);
+                for(int i = 0; i< imgList.size();i++){
+                    String key = comicName+(i+1);
+                    Log.i("REQUEST__",key);
+                    es.execute(new DownLoadTask(imgList.get(key),key));
                 }
-                startDownload(allRequests);
             }
         }
     }
 
-    /**
-     * 开始下载
-     *
-     * @param urls 请求集合
-     */
-    public void startDownload(List<List<Request<Bitmap>>> urls) {
+    class DownLoadTask implements Runnable, com.zaozao.comics.utils.HttpListener {
 
-        ExecutorService es = Executors.newFixedThreadPool(3);
-        for (int i = 0; i < urls.size(); i++) {
-            config.putInt(comicName + i, 0);
-            es.execute(new DownLoadTask(urls.get(i), i));
-        }
-    }
+        List<String> list;
+        String tag;
+        int progress;
+        SharedPre sharedPre;
 
-    @Override
-    public void onSuccessed(int what, Response<Bitmap> response) {
-        synchronized (this){
-            Intent intent = new Intent();
-            intent.setAction("com.zaozao.comics.detail.downloadmanageactivity");
-            intent.putExtra("update_progress", 1);
-            intent.putExtra("max", allRequests.get(what).size());
-            sendBroadcast(intent);
-        }
-    }
-
-    @Override
-    public void onFailed(int what, String url, Object tag, Exception e, int responseCode, long networkMillis) {
-
-    }
-
-    class DownLoadTask implements Runnable {
-        List<Request<Bitmap>> list;
-        int what;
-
-        public DownLoadTask(List<Request<Bitmap>> list, int what) {
+        public DownLoadTask(List<String> list, String tag) {
             this.list = list;
-            this.what = what;
+            this.tag = tag;
+            sharedPre = new SharedPre("comics", DownLoadService.this);
         }
 
         @Override
         public void run() {
             for (int i = 0; i < list.size(); i++) {
-                Request<Bitmap> request = list.get(i);
-                request.setCacheKey(UUID.randomUUID().toString());
-                request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
-                CallServer.getInstance().add(APP.getInstance(), what, request, DownLoadService.this, true, false);
+                LoadImage loadImage = new LoadImage(this,getApplicationContext());
+                loadImage.downLoadImage(list.get(i), "comics", true);
             }
+        }
+
+        @Override
+        public void succeed(String result) {
+        }
+
+        @Override
+        public void succeed(Bitmap bitmap) {
+            progress++;
+            sharedPre.putInt(tag, progress);
+            MyHandler handler = new MyHandler();
+            Message message = new Message();
+            message.obj = tag;
+            message.arg1 = list.size();
+            handler.sendMessage(message);
+            Log.i("TAG", "下载完成" + (++i));
+        }
+
+        @Override
+        public void failed() {
+
+        }
+    }
+
+    class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            String m = (String) msg.obj;
+            Intent intent = new Intent();
+            intent.putExtra("type", m);
+            intent.putExtra("max", msg.arg1);
+            intent.setAction("com.zaozao.comics.detail.downloadmanageactivity");
+            Log.i("TAG", "收到消息");
+            sendBroadcast(intent);
+            Log.i("TAG", "发送广播");
         }
     }
 }

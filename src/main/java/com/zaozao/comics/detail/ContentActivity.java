@@ -353,7 +353,7 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void getData(ArrayList<String> imageList,String name) {
+    public void getData(ArrayList<String> imageList) {
         Log.i("NEWDATA", "kkjii");
         if (imageList != null) {
             if (!urlList.isEmpty()) {

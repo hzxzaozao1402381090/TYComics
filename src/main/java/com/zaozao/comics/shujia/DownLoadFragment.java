@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.zaozao.comics.APP;
 import com.zaozao.comics.R;
+import com.zaozao.comics.bean.LoadFile;
 import com.zaozao.comics.provider.Observer;
 import com.zaozao.comics.utils.AppConfig;
 
@@ -146,12 +147,12 @@ public class DownLoadFragment extends Fragment {
                 convertView.setTag(viewHolder);
             }
             viewHolder = (ViewHolder) convertView.getTag();
-            viewHolder.comicName.setText(fileList.get(position).getComicName());
+            viewHolder.comicName.setText(fileList.get(position).getName());
             viewHolder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-                    dialog.setTitle("确定删除" + "《" + fileList.get(position).getComicName() + "》吗？");
+                    dialog.setTitle("确定删除" + "《" + fileList.get(position).getName() + "》吗？");
                     dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -170,7 +171,7 @@ public class DownLoadFragment extends Fragment {
 
                 }
             });
-            APP.imageLoader.displayImage(fileList.get(position).getCoverImaage(), viewHolder.coverImage);
+          //  APP.imageLoader.displayImage(fileList.get(position).getCoverImaage(), viewHolder.coverImage);
             return convertView;
         }
 

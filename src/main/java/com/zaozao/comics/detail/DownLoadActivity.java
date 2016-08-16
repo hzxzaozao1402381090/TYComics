@@ -21,6 +21,7 @@ import com.zaozao.comics.utils.AppConfig;
 import com.zaozao.comics.utils.SharedPre;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DownLoadActivity extends Activity implements View.OnClickListener {
 
@@ -31,6 +32,7 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
     private ArrayList<CheckBox> checkBoxes;
     private ArrayList<BookChapter> chapters;//总的章节列表
     private ArrayList<BookChapter> choosedChapters;//选中的章节列表
+    private List<Integer> bianhao = new ArrayList<>();
     private boolean isCheckedAll;
     private ImageView back;
     private TextView title;
@@ -127,9 +129,8 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
      */
     public void saveLoadFile() {
         SharedPre sharedPre = new SharedPre("comics", this);
-        for (int i = 0; i < choosedChapters.size(); i++) {
-            sharedPre.putInt(comicName + choosedChapters.get(i).getName(), 0);
-
+        for (int i = 0; i < bianhao.size(); i++) {
+            sharedPre.putInt(comicName+(bianhao.get(i)+1), 0);
         }
     }
 
@@ -165,7 +166,8 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
-                        choosedChapters.add(chapters.get(position));
+                        bianhao.add(position);
+                        choosedChapters.add(chapters.get(position+1));
                         startDownLoad.setEnabled(true);
                     }
                 }
