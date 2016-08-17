@@ -129,8 +129,8 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
      */
     public void saveLoadFile() {
         SharedPre sharedPre = new SharedPre("comics", this);
-        for (int i = 0; i < bianhao.size(); i++) {
-            sharedPre.putInt(comicName+(bianhao.get(i)+1), 0);
+        for (int i = 0; i < choosedChapters.size(); i++) {
+            sharedPre.putInt(comicName+choosedChapters.get(i).getName(), 0);
         }
     }
 
@@ -167,7 +167,7 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         bianhao.add(position);
-                        choosedChapters.add(chapters.get(position+1));
+                        choosedChapters.add(chapters.get(position));
                         startDownLoad.setEnabled(true);
                     }
                 }

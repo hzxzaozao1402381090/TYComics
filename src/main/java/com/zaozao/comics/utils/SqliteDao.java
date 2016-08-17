@@ -41,6 +41,13 @@ public class SqliteDao {
         }
         return false;
     }
+    public String queryPath(String name){
+        Cursor cursor = db.rawQuery("select path from comic where name = ?",new String[]{name});
+        if(cursor!=null&&cursor.moveToNext()){
+            return  cursor.getString(cursor.getColumnIndex("path"));
+        }
+        return "";
+    }
     /**
      * 关闭数据库
      */

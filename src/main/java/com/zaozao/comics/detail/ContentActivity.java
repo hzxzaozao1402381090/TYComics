@@ -4,6 +4,8 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -37,7 +39,11 @@ import com.zaozao.comics.R;
 import com.zaozao.comics.bean.BookChapter;
 import com.zaozao.comics.customview.MyRecyclerView;
 import com.zaozao.comics.http.HttpURL;
+import com.zaozao.comics.http.JsonParser;
 
+import org.json.JSONException;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,8 +76,8 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
         getScreenSize();
-        getPageData();
         init();
+        getPageData();
         setListenerAdapter();
         setOnScrollListener();
     }
@@ -138,15 +144,31 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
         what = intent.getIntExtra("what", 0);
         titleText = intent.getStringExtra("chapter_name");
         comicName = intent.getStringExtra("comicName");
-        list = intent.getParcelableArrayListExtra("all");
-        loadPageData = new LoadPageData(this, HttpURL.COMICS_CHAPTER_CONTENT, this);
-        loadPageData.addRequestParams(HttpURL.APP_KEY, comicName, what);
-        loadPageData.addTask(what);
-        Log.i("TAG", titleText);
-      /*  urlList = new ArrayList<>();
-        urlList.add("http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/0-MjI3ODkzMA==.jpg");
-        urlList.add("http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/1-MjI3ODkzMQ==.jpg");
-        urlList.add("http://imgs.juheapi.com/comic_xin/uufJq9H9vKc=/227893/2-MjI3ODkzMg==.jpg");*/
+        String s = getFilesDir().toString();
+        String s1 = s.substring(0,s.length()-6);
+        String s2 = s1+ File.separator+"databases"+File.separator+"_nohttp_cache_db.db";
+        System.out.println(s2);
+        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(s2,null);
+        Cursor cursor = db.rawQuery("select * from cache_table where key = ?",new String[]{HttpURL.COMICS_CHAPTER_CONTENT+comicName+what});
+        if(cursor!=null&&cursor.moveToNext()){
+            Log.i("TAG","+++++++++++++++++++++++++++++++++++++++");
+            byte[] next = cursor.getBlob(cursor.getColumnIndex("data"));
+            String data = new String(next,0,next.length);
+            try {
+                ArrayList<String> list = JsonParser.getContentImage(data);
+                adapter = new RecycleAdapter(list,this);
+                recyclerView.setAdapter(adapter);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.i("TAG",data);
+        }else{
+            list = intent.getParcelableArrayListExtra("all");
+            loadPageData = new LoadPageData(this, HttpURL.COMICS_CHAPTER_CONTENT, this);
+            loadPageData.addRequestParams(HttpURL.APP_KEY, comicName, what);
+            loadPageData.addTask(what);
+            Log.i("TAG", titleText);
+        }
     }
 
     public void setListenerAdapter() {
@@ -353,7 +375,7 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void getData(ArrayList<String> imageList) {
+    public void getData(ArrayList<String> imageList,int id) {
         Log.i("NEWDATA", "kkjii");
         if (imageList != null) {
             if (!urlList.isEmpty()) {

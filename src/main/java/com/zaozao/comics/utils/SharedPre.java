@@ -45,17 +45,19 @@ public class SharedPre {
      * 获取所有的数据
      * @return
      */
-    public List<LoadFile> getAll(){
+    public List<LoadFile> getAll(String key){
         List<LoadFile> fileList = new ArrayList<>();
         Map<String, ?> all = sp.getAll();
         Set<? extends Map.Entry<String, ?>> entry = all.entrySet();
         Iterator<? extends Map.Entry<String, ?>> it = entry.iterator();
         while(it.hasNext()){
             Map.Entry<String, ?> next = it.next();
-            LoadFile loadFile = new LoadFile();
-            loadFile.setName(next.getKey());
-            loadFile.setProgress((Integer) next.getValue());
-            fileList.add(loadFile);
+            if(next.getKey().startsWith(key)){
+                LoadFile loadFile = new LoadFile();
+                loadFile.setName(next.getKey());
+                loadFile.setProgress((Integer) next.getValue());
+                fileList.add(loadFile);
+            }
         }
         return fileList;
     }

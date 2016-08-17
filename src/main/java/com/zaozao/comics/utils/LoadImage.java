@@ -43,18 +43,11 @@ public class LoadImage extends AsyncTask<String, Integer, Bitmap> {
     protected void onPostExecute(Bitmap bitmap) {
         super.onPostExecute(bitmap);
         if (bitmap != null) {
-            listener.succeed(bitmap);
+            if(listener!=null){
+                listener.succeed(bitmap);
+            }
             if (imageView != null)
                 imageView.setImageBitmap(bitmap);
-        }
-        if (allowCache) {
-            try {
-                sqliteDao = SqliteDao.getInstance(context);
-                sqliteDao.insert(getImageName(url), Environment.getExternalStorageDirectory() + File.separator + folder + File.separator + getImageName(url));
-                SDCard.getInstance().saveBitmap(bitmap, folder, getImageName(url));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -69,6 +62,17 @@ public class LoadImage extends AsyncTask<String, Integer, Bitmap> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            if (allowCache) {
+                try {
+                    sqliteDao.insert(getImageName(url), Environment.getExternalStorageDirectory() + File.separator + folder + File.separator + getImageName(url));
+                    SDCard.getInstance().saveBitmap(bitmap, folder, getImageName(url));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else{
+            String path = sqliteDao.queryPath(getImageName(strings[0]));
+            bitmap = BitmapFactory.decodeFile(path);
         }
         return bitmap;
     }

@@ -53,9 +53,6 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
         comicName = intent.getStringExtra(Constant.COMICS_NAME);
         comic_cover = intent.getStringExtra(Constant.COMICS_COVER);
         list = intent.getParcelableArrayListExtra(Constant.CHAPTER_LIST);
-        for(BookChapter chapter:list){
-            System.out.println(chapter.getName()+"---------"+chapter.getId());
-        }
         init();
     }
 
@@ -68,22 +65,23 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
     }
 
     @Override
-    public void getData(ArrayList<String> imageList) {
+    public void getData(ArrayList<String> imageList,int id) {
         Log.i("REQUEST__", imageList.size() + "--------------------------------");
+        System.out.println(imageList==null);
         if (imageList != null) {
-            this.imgList.put(comicName+(++i), imageList);
-            Log.i("REQUEST__", imgList.size()+ "," + list.size());
-            Set<Map.Entry<String, ArrayList<String>>> entry = imgList.entrySet();
-            Iterator<Map.Entry<String, ArrayList<String>>> it = entry.iterator();
-            while(it.hasNext()){
-                Map.Entry<String, ArrayList<String>> next = it.next();
-                Log.i("REQUEST__",next.getKey()+","+next.getValue());
+            for(BookChapter chapter:list){
+                if ((chapter.getId()==id)){
+                    this.imgList.put(comicName+chapter.getName(), imageList);
+                }
             }
             if(imgList.size()==list.size()){
                 ExecutorService es = Executors.newFixedThreadPool(3);
-                for(int i = 0; i< imgList.size();i++){
-                    String key = comicName+(i+1);
-                    Log.i("REQUEST__",key);
+                Set<Map.Entry<String, ArrayList<String>>> entry = imgList.entrySet();
+                Iterator<Map.Entry<String, ArrayList<String>>> it = entry.iterator();
+                while(it.hasNext()){
+                    Map.Entry<String, ArrayList<String>> next = it.next();
+                    Log.i("REQUEST__",next.getKey()+","+next.getValue().size());
+                    String key = next.getKey();
                     es.execute(new DownLoadTask(imgList.get(key),key));
                 }
             }
@@ -105,6 +103,7 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
 
         @Override
         public void run() {
+            System.out.println("list---------------------------------"+list.size());
             for (int i = 0; i < list.size(); i++) {
                 LoadImage loadImage = new LoadImage(this,getApplicationContext());
                 loadImage.downLoadImage(list.get(i), "comics", true);
@@ -142,9 +141,7 @@ public class DownLoadService extends IntentService implements LoadPageData.DataC
             intent.putExtra("type", m);
             intent.putExtra("max", msg.arg1);
             intent.setAction("com.zaozao.comics.detail.downloadmanageactivity");
-            Log.i("TAG", "收到消息");
             sendBroadcast(intent);
-            Log.i("TAG", "发送广播");
         }
     }
 }

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.zaozao.comics.APP;
 import com.zaozao.comics.R;
+import com.zaozao.comics.utils.LoadImage;
 
 import java.util.List;
 
@@ -36,7 +37,9 @@ class RecycleAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyHolder) {
-            APP.imageLoader.displayImage(urlList.get(position), ((MyHolder) holder).imageView);
+           // APP.imageLoader.displayImage(urlList.get(position), ((MyHolder) holder).imageView);
+            LoadImage loadImage = new LoadImage(null,context);
+            loadImage.loadNetImage(urlList.get(position),((MyHolder) holder).imageView,"comics",true);
         }
     }
 

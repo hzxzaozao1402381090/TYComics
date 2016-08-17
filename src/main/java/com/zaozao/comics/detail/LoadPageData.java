@@ -61,7 +61,7 @@ public class LoadPageData implements HttpListener<String> {
         request.add("comicName", name);
         request.add("id", id);
         Log.i("URL",url);
-        request.setCacheKey(url);
+        request.setCacheKey(url+name+id);
         request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
     }
 
@@ -82,7 +82,7 @@ public class LoadPageData implements HttpListener<String> {
         if(response!=null){
             String json = response.get();
             try {
-                callback.getData(JsonParser.getContentImage(json));
+                callback.getData(JsonParser.getContentImage(json),what);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -103,7 +103,7 @@ public class LoadPageData implements HttpListener<String> {
         e.printStackTrace();
     }
     public interface DataCallback{
-        void getData( ArrayList<String> imageList);
+        void getData( ArrayList<String> imageList,int id);
     }
 }
 

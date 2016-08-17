@@ -60,7 +60,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
      */
     public void init() {
         sharedPre = new SharedPre("comics", this);
-        fileList = sharedPre.getAll();
+        fileList = sharedPre.getAll(comicName);
         adapter = new ListViewAdapter(this, fileList);
         other.setText("删除");
         title.setText(comicName);
@@ -97,10 +97,18 @@ public class DownLoadManagerActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 LoadFile file = (LoadFile) parent.getItemAtPosition(position);
-                if(file.getState().equals("下载完成")){
-                    Intent intent = new Intent(DownLoadManagerActivity.this,ContentActivity.class);
-
+                if (file.getState().equals("下载完成")) {
+                    Intent intent = new Intent(DownLoadManagerActivity.this, ContentActivity.class);
+                    intent.putExtra("comicName", comicName);
+                    intent.putExtra("what",choosedChapters.get(position).getId());
+                    startActivity(intent);
                 }
+            }
+        });
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DownLoadManagerActivity.this.finish();
             }
         });
     }
