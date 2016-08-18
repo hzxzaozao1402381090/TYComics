@@ -72,9 +72,9 @@ class ListAdapter extends BaseAdapter {
         }
         holder = (MyHolder) convertView.getTag();
         holder.nameTextView.setText(data.get(position).get("name").toString());
-        holder.readTextView.setText(data.get(position).get("readto").toString());
-        holder.updateTextView.setText(data.get(position).get("updateto").toString());
-        holder.lastUpdateTextView.setText(data.get(position).get("lastupdate").toString());
+        holder.readTextView.setText("阅读至第"+data.get(position).get("readto").toString()+"话");
+        holder.updateTextView.setText("更新到："+data.get(position).get("updateto").toString()+"话");
+        holder.lastUpdateTextView.setText("上次更新："+data.get(position).get("lastupdate").toString());
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

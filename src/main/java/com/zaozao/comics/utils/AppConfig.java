@@ -2,9 +2,11 @@ package com.zaozao.comics.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.zaozao.comics.APP;
 import com.zaozao.comics.bean.LoadFile;
@@ -32,7 +34,6 @@ public class AppConfig {
 
     private static AppConfig appConfig;
     private SQLiteDatabase db;
-    private String sdCardPath;
     private SharedPreferences preferences;
 
     private AppConfig() {
@@ -53,8 +54,17 @@ public class AppConfig {
      * @param context
      */
     public void clearCache(Context context) {
-        db = SQLiteDatabase.openOrCreateDatabase(context.getFilesDir().toString() + "_nohttp_cache_db.db", null);
-        db.execSQL("drop table cache_table;");
+        String s = context.getFilesDir().toString();
+        String s1 = s.substring(0, s.length() - 6);
+        String s2 = s1 + File.separator + "databases" + File.separator + "_nohttp_cache_db.db";
+        System.out.println(s2);
+        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(s2, null);
+        try{
+            db.execSQL("delete from cache_table");
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     /**

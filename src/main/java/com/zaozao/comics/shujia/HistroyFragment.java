@@ -85,8 +85,8 @@ public class HistroyFragment extends ShuJiaFragment {
         System.out.println(books.size());
         books.removeAll(bookList);
         System.out.println(books.size());
-     //  adapter = new ListAdapter(data,this);
-      //  listView.setAdapter(adapter);
+        adapter = new ListAdapter(data,this);
+        listView.setAdapter(adapter);
 
     }
 }

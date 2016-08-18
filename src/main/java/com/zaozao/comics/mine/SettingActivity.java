@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.zaozao.comics.R;
 import com.zaozao.comics.utils.AppConfig;
@@ -37,6 +38,7 @@ public class SettingActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.clear_cache:
                 config.clearCache(this);
+                Toast.makeText(this,"清除成功！",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

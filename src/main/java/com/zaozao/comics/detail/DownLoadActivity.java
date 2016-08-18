@@ -114,6 +114,7 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
                 intent.putParcelableArrayListExtra(Constant.CHAPTER_LIST, choosedChapters);
                 intent.putExtra(Constant.COMICS_NAME, comicName);
                 intent.putExtra(Constant.COMICS_COVER, comic_cover);
+                intent.putExtra("all",chapters);
                 saveLoadFile();
                 startActivity(intent);
                 this.finish();

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.zaozao.comics.Constant;
 import com.zaozao.comics.R;
+import com.zaozao.comics.bean.Book;
 import com.zaozao.comics.bean.BookChapter;
 import com.zaozao.comics.bean.LoadFile;
 import com.zaozao.comics.services.DownLoadService;
@@ -38,6 +39,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
     @InjectView(R.id.download_recycle)
     ListView downloadRecycle;
     private ArrayList<BookChapter> choosedChapters;
+    private ArrayList<BookChapter> allChapters;
     static String action = "com.zaozao.comics.detail.downloadmanageactivity";
     String comic_cover;
     static List<LoadFile> fileList;
@@ -75,6 +77,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
         comicName = intent.getStringExtra(Constant.COMICS_NAME);
         comic_cover = intent.getStringExtra(Constant.COMICS_COVER);
         choosedChapters = intent.getParcelableArrayListExtra(Constant.CHAPTER_LIST);
+        allChapters = intent.getParcelableArrayListExtra("all");
     }
 
     /**
@@ -101,6 +104,8 @@ public class DownLoadManagerActivity extends AppCompatActivity {
                     Intent intent = new Intent(DownLoadManagerActivity.this, ContentActivity.class);
                     intent.putExtra("comicName", comicName);
                     intent.putExtra("what",choosedChapters.get(position).getId());
+                    intent.putExtra("chapter_name",choosedChapters.get(position).getName());
+                    intent.putExtra("all",allChapters);
                     startActivity(intent);
                 }
             }

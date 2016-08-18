@@ -58,7 +58,7 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
     boolean isshowing, showPop;
     MyRecyclerView recyclerView;
     ImageView back;
-    TextView hxTextView, ldTextView, mlTextView,yjTextView;
+    TextView hxTextView, ldTextView, mlTextView, yjTextView;
     TextView title;//章节标题
     LinearLayoutManager llManager;
     PopupWindow p;
@@ -118,7 +118,7 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
         hxTextView = (TextView) findViewById(R.id.hx);
         ldTextView = (TextView) findViewById(R.id.ld);
         mlTextView = (TextView) findViewById(R.id.ml);
-        yjTextView = (TextView)findViewById(R.id.yj);
+        yjTextView = (TextView) findViewById(R.id.yj);
         hxTextView.setTag("vertical");
         frameLayout = (FrameLayout) findViewById(R.id.frame);
         title = (TextView) findViewById(R.id.chapter_name);
@@ -145,24 +145,24 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
         titleText = intent.getStringExtra("chapter_name");
         comicName = intent.getStringExtra("comicName");
         String s = getFilesDir().toString();
-        String s1 = s.substring(0,s.length()-6);
-        String s2 = s1+ File.separator+"databases"+File.separator+"_nohttp_cache_db.db";
+        String s1 = s.substring(0, s.length() - 6);
+        String s2 = s1 + File.separator + "databases" + File.separator + "_nohttp_cache_db.db";
         System.out.println(s2);
-        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(s2,null);
-        Cursor cursor = db.rawQuery("select * from cache_table where key = ?",new String[]{HttpURL.COMICS_CHAPTER_CONTENT+comicName+what});
-        if(cursor!=null&&cursor.moveToNext()){
-            Log.i("TAG","+++++++++++++++++++++++++++++++++++++++");
+        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(s2, null);
+        Cursor cursor = db.rawQuery("select * from cache_table where key = ?", new String[]{HttpURL.COMICS_CHAPTER_CONTENT + comicName + what});
+        if (cursor != null && cursor.moveToNext()) {
+            Log.i("TAG", "+++++++++++++++++++++++++++++++++++++++");
             byte[] next = cursor.getBlob(cursor.getColumnIndex("data"));
-            String data = new String(next,0,next.length);
+            String data = new String(next, 0, next.length);
             try {
                 ArrayList<String> list = JsonParser.getContentImage(data);
-                adapter = new RecycleAdapter(list,this);
+                adapter = new RecycleAdapter(list, this);
                 recyclerView.setAdapter(adapter);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Log.i("TAG",data);
-        }else{
+            Log.i("TAG", data);
+        } else {
             list = intent.getParcelableArrayListExtra("all");
             loadPageData = new LoadPageData(this, HttpURL.COMICS_CHAPTER_CONTENT, this);
             loadPageData.addRequestParams(HttpURL.APP_KEY, comicName, what);
@@ -191,6 +191,7 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 Log.i("TAG", "newState:" + newState);
+                recyclerView.getParent().requestDisallowInterceptTouchEvent(false);
                 super.onScrollStateChanged(recyclerView, newState);
             }
 
@@ -225,9 +226,9 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.ml:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                View view = getLayoutInflater().inflate(R.layout.content_dialog,null);
-                ListView listView = (ListView)view.findViewById(R.id.content_dialog_list);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.content_dialog_list_item,R.id.content_dialog_list_item_text,getContent());
+                View view = getLayoutInflater().inflate(R.layout.content_dialog, null);
+                ListView listView = (ListView) view.findViewById(R.id.content_dialog_list);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.content_dialog_list_item, R.id.content_dialog_list_item_text, getContent());
                 listView.setAdapter(adapter);
                 builder.setView(view);
                 final AlertDialog dialog = builder.create();
@@ -243,16 +244,16 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 });
                 WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
-                params.height = screenHeight/2;
-                params.width = (int) (screenWidth-100*density);
+                params.height = screenHeight / 2;
+                params.width = (int) (screenWidth - 100 * density);
                 dialog.getWindow().setAttributes(params);
                 break;
             case R.id.yj:
-                WindowManager manager = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
+                WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
                 WindowManager.LayoutParams param = new WindowManager.LayoutParams(
-                        WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT,
+                        WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT,
                         WindowManager.LayoutParams.TYPE_APPLICATION,
-                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE|WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                         PixelFormat.TRANSLUCENT);
 
                 param.gravity = Gravity.TOP;
@@ -260,7 +261,7 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
 
                 TextView tv = new TextView(this);
                 tv.setBackgroundColor(0x55000000);
-                manager.addView(tv,param);
+                manager.addView(tv, param);
                 break;
         }
     }
@@ -375,7 +376,7 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void getData(ArrayList<String> imageList,int id) {
+    public void getData(ArrayList<String> imageList, int id) {
         Log.i("NEWDATA", "kkjii");
         if (imageList != null) {
             if (!urlList.isEmpty()) {

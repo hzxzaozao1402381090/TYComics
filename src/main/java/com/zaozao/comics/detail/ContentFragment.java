@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ContentFragment extends Fragment{
+public class ContentFragment extends Fragment {
 
     GridView gridView;
     ArrayAdapter<String> adapter;
@@ -57,7 +57,7 @@ public class ContentFragment extends Fragment{
      * @param comicName 漫画名称
      * @return Fragment
      */
-    public static ContentFragment newInstance(int start, int size, List<BookChapter> listAll,List<BookChapter> listBeen, String comicName, int lastupdate, String coverImage) {
+    public static ContentFragment newInstance(int start, int size, List<BookChapter> listAll, List<BookChapter> listBeen, String comicName, int lastupdate, String coverImage) {
         ContentFragment fragment = new ContentFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("start", start);
@@ -91,12 +91,20 @@ public class ContentFragment extends Fragment{
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getContext(),ContentActivity.class);
-                intent.putExtra("what",listBeen.get(position).getId());
-                intent.putExtra("chapter_name",listBeen.get(position).getName());
-                intent.putExtra("comicName",comicName);
-                intent.putParcelableArrayListExtra("all",  listAll);
-                intent.putParcelableArrayListExtra("chapters",listBeen);
+                Intent intent = new Intent(getContext(), ContentActivity.class);
+                intent.putExtra("what", listBeen.get(position).getId());
+                intent.putExtra("chapter_name", listBeen.get(position).getName());
+                intent.putExtra("comicName", comicName);
+                intent.putParcelableArrayListExtra("all", listAll);
+                intent.putParcelableArrayListExtra("chapters", listBeen);
+                Book book = new Book();
+                book.setName(comicName);
+                book.setCoverImg(picture);
+                book.setLastUpdate(lastupdate);
+                book.setTotal(listBeen.size());
+                if (!HistroyFragment.books.contains(book)) {
+                    HistroyFragment.books.add(book);
+                }
                 startActivity(intent);
             }
         });
