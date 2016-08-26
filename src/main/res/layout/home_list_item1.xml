@@ -49,8 +49,8 @@
                 android:id="@+id/img_01"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/item1" />
+                android:scaleType="fitXY"
+                android:src="@drawable/loading" />
 
             <TextView
                 android:id="@+id/text_01"
@@ -73,8 +73,8 @@
                 android:id="@+id/img_02"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/item1" />
+                android:scaleType="fitXY"
+                android:src="@drawable/loading" />
 
             <TextView
                 android:id="@+id/text_02"
@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/item1" />
+                android:src="@drawable/loading" />
 
             <TextView
                 android:id="@+id/text_03"

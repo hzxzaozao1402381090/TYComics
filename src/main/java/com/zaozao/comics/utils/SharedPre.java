@@ -61,4 +61,12 @@ public class SharedPre {
         }
         return fileList;
     }
+
+    /**
+     * 删除一条记录
+     * @param key
+     */
+    public void delete(String key){
+        sp.edit().remove(key).commit();
+    }
 }

@@ -144,6 +144,7 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
         what = intent.getIntExtra("what", 0);
         titleText = intent.getStringExtra("chapter_name");
         comicName = intent.getStringExtra("comicName");
+        list = intent.getParcelableArrayListExtra("all");
         String s = getFilesDir().toString();
         String s1 = s.substring(0, s.length() - 6);
         String s2 = s1 + File.separator + "databases" + File.separator + "_nohttp_cache_db.db";
@@ -163,7 +164,6 @@ public class ContentActivity extends AppCompatActivity implements View.OnClickLi
             }
             Log.i("TAG", data);
         } else {
-            list = intent.getParcelableArrayListExtra("all");
             loadPageData = new LoadPageData(this, HttpURL.COMICS_CHAPTER_CONTENT, this);
             loadPageData.addRequestParams(HttpURL.APP_KEY, comicName, what);
             loadPageData.addTask(what);

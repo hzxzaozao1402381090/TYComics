@@ -130,8 +130,11 @@ public class DownLoadActivity extends Activity implements View.OnClickListener {
      */
     public void saveLoadFile() {
         SharedPre sharedPre = new SharedPre("comics", this);
-        for (int i = 0; i < choosedChapters.size(); i++) {
-            sharedPre.putInt(comicName+choosedChapters.get(i).getName(), 0);
+        List<LoadFile> list = sharedPre.getAll(comicName);
+        if(list.isEmpty()){
+            for (int i = 0; i < choosedChapters.size(); i++) {
+                sharedPre.putInt(comicName+choosedChapters.get(i).getName(), 0);
+            }
         }
     }
 

@@ -44,7 +44,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
     String comic_cover;
     static List<LoadFile> fileList;
     static ListViewAdapter adapter;
-    SharedPre sharedPre;
+    static SharedPre sharedPre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +107,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
                     intent.putExtra("chapter_name",choosedChapters.get(position).getName());
                     intent.putExtra("all",allChapters);
                     startActivity(intent);
+                    DownLoadManagerActivity.this.finish();
                 }
             }
         });
@@ -135,6 +136,7 @@ public class DownLoadManagerActivity extends AppCompatActivity {
                         file.setProgress(++progress);
                         if (progress == max) {
                             file.setState("下载完成");
+                            sharedPre.delete(file.getName());
                         } else {
                             file.setState((progress * 100) / max + "%下载中");
                         }

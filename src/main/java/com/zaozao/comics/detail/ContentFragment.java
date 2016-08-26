@@ -96,6 +96,7 @@ public class ContentFragment extends Fragment {
                 intent.putExtra("chapter_name", listBeen.get(position).getName());
                 intent.putExtra("comicName", comicName);
                 intent.putParcelableArrayListExtra("all", listAll);
+                intent.putParcelableArrayListExtra("all", listAll);
                 intent.putParcelableArrayListExtra("chapters", listBeen);
                 Book book = new Book();
                 book.setName(comicName);
