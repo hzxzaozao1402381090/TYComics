@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -102,6 +103,8 @@ public class BookDetail extends AppCompatActivity implements View.OnClickListene
      * 查找控件
      */
     public void findView() {
+        RatingBar bar = new RatingBar(this);
+
         back = (ImageButton) findViewById(R.id.back);
         book_cover = (ImageView) findViewById(R.id.book_cover);
         book_name = (TextView) findViewById(R.id.book_name);

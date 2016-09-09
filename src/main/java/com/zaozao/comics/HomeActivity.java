@@ -33,6 +33,8 @@ public class HomeActivity extends FragmentActivity {
     FragmentManager manager;
     FragmentTransaction transaction;
     List<Fragment> fragments = new ArrayList<>();
+    //当前显示的Fragment
+    Fragment currentFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,41 +51,37 @@ public class HomeActivity extends FragmentActivity {
         fragments.add(new ShuJiaFragment());
         fragments.add(new SearchFragment());
         fragments.add(new MineFragment());
+        currentFragment = fragments.get(0);
+        manager.beginTransaction().add(R.id.content, currentFragment).commit();
     }
 
     private void setView() {
-        transaction = manager.beginTransaction();
-        transaction.replace(R.id.content, new MainFragment());
-        transaction.commit();
+
         navigation.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(RadioGroup arg0, int id) {
+                Fragment fragment = null;
                 switch (id) {
                     case R.id.sort:
-                        transaction = manager.beginTransaction();
-                        transaction.replace(R.id.content,new MainFragment());
-                        transaction.commit();
+                        fragment = fragments.get(0);
                         break;
                     case R.id.shujia:
-                        transaction = manager.beginTransaction();
-                        transaction.replace(R.id.content, new ShuJiaFragment());
-                        transaction.commit();
+                        fragment = fragments.get(1);
                         break;
                     case R.id.search:
-                        transaction = manager.beginTransaction();
-                        transaction.replace(R.id.content, new SearchFragment());
-                        transaction.commit();
+                        fragment = fragments.get(2);
                         break;
                     case R.id.mine:
-                        transaction = manager.beginTransaction();
-                        transaction.replace(R.id.content, new MineFragment());
-                        transaction.commit();
-                        break;
-                    default:
+                        fragment = fragments.get(3);
                         break;
                 }
-
+                if (!fragment.isAdded()) {
+                    manager.beginTransaction().hide(currentFragment).add(R.id.content, fragment).commit();
+                } else {
+                    manager.beginTransaction().hide(currentFragment).show(fragment).commit();
+                }
+                currentFragment = fragment;
             }
         });
     }
